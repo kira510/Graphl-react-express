@@ -1,0 +1,47 @@
+Introduction: Why Graphql?
+  Using rest apis will make your application grow as you will need a lot of end points to fetch different data of same item
+  Code slows down and you will write more code to manage filtering data contents, for example using query parameters
+
+GraphQL
+  A query language for APIs, we can make only POST request where in we have to pass a query mandatorily.
+
+Type Definitions
+  Query
+  Mutations
+  Subscriptions
+
+Resolvers:
+  Controllers for the graphql queries that help us fetch the data we need. Basically kinda following the MVC pattern.
+
+Install express and body parser
+        npm install --save express body-parser
+    Please note that am not using body-parser instead i do this,
+        app.use(express.json());
+
+    npm install --save graphql
+       -> help is write graphql schemas , parse and use schema with express-graphql
+    npm install --save express-graphql
+
+Express-graphql
+    Exports a middleware that you can use to mount the graphwl api server.
+    DOCS: https://graphql.org/graphql-js/running-an-express-graphql-server/
+          https://github.com/graphql/express-graphql
+
+Mutations
+    mutation {
+        createEvent (eventInput: {
+            title:"Hi"
+            description: "does this work"
+            price:45.0
+            date: "2019-07-30T07:41:35.242Z"
+        }) {
+            title
+            date
+            _id
+        }
+    }
+
+Query
+    query {
+        events {_id, title}
+    }
